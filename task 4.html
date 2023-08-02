@@ -1,0 +1,35 @@
+// app.js
+const apiUrl = 'http://localhost:5000/api/items';
+
+// Fetch items from the API
+async function getItems() {
+  try {
+    const response = await fetch(apiUrl);
+    return response.json();
+  } catch (err) {
+    console.error('Error fetching items:', err);
+    return [];
+  }
+}
+
+// Render items to the page
+async function renderItems() {
+  const items = await getItems();
+  const appContainer = document.getElementById('app');
+  // Use the items data to render your components here (e.g., create a card for each item)
+}
+
+renderItems(); // Call the render function on page load
+<!-- index.html -->
+<div class="p-4 max-w-sm mx-auto bg-white rounded-xl shadow-md space-y-2">
+  <div class="flex">
+    <div class="flex-shrink-0">
+      <img class="h-12 w-12" src="image-url" alt="Item Image">
+    </div>
+    <div class="ml-4">
+      <h2 class="text-xl font-semibold text-gray-900">Item Name</h2>
+      <p class="text-gray-500">Item Description</p>
+      <p class="text-gray-900 font-bold">$20.00</p>
+    </div>
+  </div>
+</div>
